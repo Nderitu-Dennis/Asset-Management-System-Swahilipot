@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ asset.name }} - Asset Detail</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        .footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            width: 100%;
+            bottom: -30px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'dashboard' %}">Dashboard</a>
+        <a href="{% url 'add_asset' %}">New  Asset</a>
+        <a href="{% url 'maintenance_form' %}">Maintenance</a>
+        <a href="{% url 'existing_assets' %}">Existing Assets</a>
+        <a href="{% url 'tracking_form' %}">Tracking Form</a>
+    </nav>
+    <div class="container mt-5">
+        <h1 class="display-4">{{ asset.name }}</h1>
+        <p class="lead">ID: {{ asset.asset_id }}</p>
+        <p>Description: {{ asset.description }}</p>
+        <p>Location: {{ asset.location }}</p>
+        <a class="btn btn-primary" href="{% url 'add_maintenance' asset_id=asset.id %}">Add Maintenance</a>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+    <div class="footer">
+        &copy; 2024 SwahiliPot Asset Management System. All rights reserved.
+    </div>
+</body>
+</html>

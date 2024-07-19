@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracking Form</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <style>
+        .footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: absolute;
+            width: 100%;
+            bottom: -60px;
+        }
+        nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: #007bff;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+        }
+        nav a:hover {
+            background-color: #0056b3;
+            border-radius: 4px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        form {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 600px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        .form-group button {
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'dashboard' %}">Dashboard</a>
+        <a href="{% url 'add_asset' %}">New Asset</a>
+        <a href="{% url 'maintenance_form' %}">Maintenance</a>
+        <a href="{% url 'existing_assets' %}">Existing Assets</a>
+        <a href="{% url 'tracking_form' %}">Tracking Form</a>
+    </nav>
+    <div class="container">
+        <h1>Submit Tracking Information</h1>
+        <form method="post" action="{% url 'tracking_form' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div class="footer">
+        &copy; 2024 SwahiliPot Asset Management System. All rights reserved.
+    </div>
+</body>
+</html>
