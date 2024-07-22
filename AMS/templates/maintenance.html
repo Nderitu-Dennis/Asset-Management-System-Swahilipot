@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Maintenance Request</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <style>
+        .footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            width: 100%;
+            bottom: 10px;
+        }
+        nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: #007bff;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+        }
+        nav a:hover {
+            background-color: #0056b3;
+            border-radius: 4px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center align content horizontally */
+            padding: 20px;
+        }
+        form {
+            max-width: 800px; /* Limit form width */
+            width: 100%;
+            max-height: fit-content;
+            margin-bottom: 20px; /* Space below the form */
+            border: 2px solid #ddd; /* Add a border to the form */
+            border-radius: 8px; /* Rounded corners for the border */
+            padding: 20px;
+            background-color: #f8f9fa; /* Background color for the form */
+        }
+        form button {
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+            padding: 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        form button:hover {
+            background-color: #0056b3;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        table {
+            width: 100%; /* Adjust to desired width */
+            max-width: 1200px;
+            border-collapse: collapse; /* Collapse borders between table cells */
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd; /* Add borders to table and table cells */
+        }
+        th, td {
+            padding: 10px;
+            text-align: left; /* Align text to the left */
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'dashboard' %}">Dashboard</a>
+        <a href="{% url 'add_asset' %}">New Asset</a>
+        <a href="{% url 'maintenance_form' %}">Maintenance</a>
+        <a href="{% url 'existing_assets' %}">Existing Assets</a>
+        <a href="{% url 'tracking_form' %}">Tracking Form</a>
+    </nav>
+    <div class="container">
+        <h1>Submit Maintenance Request</h1>
+        <form method="post" action="{% url 'maintenance_submit' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit</button>
+        </form>
+        <a href="{% url 'maintenance_list' %}">View Maintenance Records</a>
+    </div>
+    <div class="footer">
+        &copy; 2024 SwahiliPot Asset Management System. All rights reserved.
+    </div>
+</body>
+</html>

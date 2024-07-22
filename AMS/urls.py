@@ -1,22 +1,15 @@
-"""
-URL configuration for AMS project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
-from django.contrib import admin
 from django.urls import path
+from . import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('', views.dashboard, name='dashboard'),
+    path('add_asset/', views.add_asset, name='add_asset'),
+    path('existing_assets/', views.existing_assets, name='existing_assets'),
+    path('maintenance/', views.maintenance_form, name='maintenance_form'),
+    path('maintenance_list/', views.maintenance_list, name='maintenance_list'),
+    path('tracking_form/', views.tracking_form, name='tracking_form'),
+    path('tracking_list/', views.tracking_list, name='tracking_list'),
+    path('asset/<int:asset_id>/', views.asset_detail, name='asset_detail'),
+    path('asset/<int:asset_id>/add_maintenance/', views.add_maintenance, name='add_maintenance'),
+    path('maintenance/submit/', views.maintenance_submit, name='maintenance_submit'),
 ]
